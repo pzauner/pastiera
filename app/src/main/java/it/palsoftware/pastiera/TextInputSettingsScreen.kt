@@ -394,7 +394,6 @@ fun TextInputSettingsScreen(
                 }
             }
 
-<<<<<<< HEAD
             Spacer(modifier = Modifier.height(16.dp))
 
             // Delete Alternatives Section
@@ -479,7 +478,7 @@ fun TextInputSettingsScreen(
             }
             
             Spacer(modifier = Modifier.height(16.dp))
-=======
+
             // Show Voice Input Button
             Surface(
                 modifier = Modifier
@@ -522,7 +521,6 @@ fun TextInputSettingsScreen(
                     )
                 }
             }
->>>>>>> origin/feature/optional-voice-input-button
         }
     }
 }
