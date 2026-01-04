@@ -55,6 +55,7 @@ object SettingsManager {
     private const val KEY_SHIFT_BACKSPACE_DELETE = "shift_backspace_delete" // Shift + Backspace performs forward delete
     private const val KEY_BACKSPACE_AT_START_DELETE = "backspace_at_start_delete" // Backspace at line start performs forward delete
     private const val KEY_DISABLE_ACCENTED_LETTERS = "disable_accented_letters" // Whether to hide accented letter variations
+    private const val KEY_SHOW_VOICE_INPUT_BUTTON = "show_voice_input_button" // Whether to show the voice input microphone button
 
     private const val VARIATIONS_FILE_NAME = "variations.json"
     
@@ -100,6 +101,7 @@ object SettingsManager {
     private const val DEFAULT_SHIFT_BACKSPACE_DELETE = false
     private const val DEFAULT_BACKSPACE_AT_START_DELETE = false
     private const val DEFAULT_DISABLE_ACCENTED_LETTERS = false
+    private const val DEFAULT_SHOW_VOICE_INPUT_BUTTON = true
 
     /**
      * Returns the SharedPreferences instance for Pastiera.
