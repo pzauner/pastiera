@@ -54,6 +54,7 @@ object SettingsManager {
     private const val KEY_TRACKPAD_SWIPE_THRESHOLD = "trackpad_swipe_threshold" // Threshold for swipe detection on trackpad
     private const val KEY_SHIFT_BACKSPACE_DELETE = "shift_backspace_delete" // Shift + Backspace performs forward delete
     private const val KEY_BACKSPACE_AT_START_DELETE = "backspace_at_start_delete" // Backspace at line start performs forward delete
+    private const val KEY_DISABLE_ACCENTED_LETTERS = "disable_accented_letters" // Whether to hide accented letter variations
 
     private const val VARIATIONS_FILE_NAME = "variations.json"
     
@@ -98,6 +99,7 @@ object SettingsManager {
     private const val MAX_TRACKPAD_SWIPE_THRESHOLD = 600f
     private const val DEFAULT_SHIFT_BACKSPACE_DELETE = false
     private const val DEFAULT_BACKSPACE_AT_START_DELETE = false
+    private const val DEFAULT_DISABLE_ACCENTED_LETTERS = false
 
     /**
      * Returns the SharedPreferences instance for Pastiera.
@@ -339,6 +341,23 @@ object SettingsManager {
     fun setStaticVariationBarModeEnabled(context: Context, enabled: Boolean) {
         getPreferences(context).edit()
             .putBoolean(KEY_STATIC_VARIATION_BAR_MODE, enabled)
+            .apply()
+    }
+
+    /**
+     * Returns whether accented letter variations should be disabled.
+     * When enabled, the variation row will prioritize word suggestions over accented letters.
+     */
+    fun isAccentedLettersDisabled(context: Context): Boolean {
+        return getPreferences(context).getBoolean(KEY_DISABLE_ACCENTED_LETTERS, DEFAULT_DISABLE_ACCENTED_LETTERS)
+    }
+
+    /**
+     * Sets whether accented letter variations should be disabled.
+     */
+    fun setAccentedLettersDisabled(context: Context, disabled: Boolean) {
+        getPreferences(context).edit()
+            .putBoolean(KEY_DISABLE_ACCENTED_LETTERS, disabled)
             .apply()
     }
 
@@ -1637,6 +1656,26 @@ object SettingsManager {
     fun getMinTrackpadSwipeThreshold(): Float = MIN_TRACKPAD_SWIPE_THRESHOLD
     fun getMaxTrackpadSwipeThreshold(): Float = MAX_TRACKPAD_SWIPE_THRESHOLD
     fun getDefaultTrackpadSwipeThreshold(): Float = DEFAULT_TRACKPAD_SWIPE_THRESHOLD
+
+    /**
+     * Returns whether the voice input microphone button should be shown.
+     * @param context The context
+     * @return Whether the voice input button is enabled
+     */
+    fun getShowVoiceInputButton(context: Context): Boolean {
+        return getPreferences(context).getBoolean(KEY_SHOW_VOICE_INPUT_BUTTON, DEFAULT_SHOW_VOICE_INPUT_BUTTON)
+    }
+
+    /**
+     * Sets whether the voice input microphone button should be shown.
+     * @param context The context
+     * @param enabled Whether to show the voice input button
+     */
+    fun setShowVoiceInputButton(context: Context, enabled: Boolean) {
+        getPreferences(context).edit()
+            .putBoolean(KEY_SHOW_VOICE_INPUT_BUTTON, enabled)
+            .apply()
+    }
 
     /**
      * Returns the File for variations.json in filesDir.
